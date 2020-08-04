@@ -12,17 +12,26 @@
 
 // WHEN prompted for the length of the password
 // THEN I choose a length of at least 8 characters and no more than 128 characters
-var longString = ""
-var numberOfCharacters= prompt("How many characters do you want in your password?");
+var longString = "";
+var numberOfCharacters = 0;
+
+do {
+    var numberOfCharacters = prompt("How many characters do you want in your password? (Pick an integer between 8 and 128)");
+    numberOfCharacters = numberOfCharacters * 1; // *1 So that computer recognizes when numberOfCharacters is a numerical value
+
+    if (numberOfCharacters<8 || numberOfCharacters>128 || Number.isInteger(numberOfCharacters) === false) {
+        alert("Please choose an integer between 8 and 128!");
+    }
+}
+while (numberOfCharacters<8 || numberOfCharacters>128 || Number.isInteger(numberOfCharacters) === false) ;
+
 
 // WHEN prompted for character types to include in the password
 // THEN I choose lowercase, uppercase, numeric, and/or special characters
 // WHEN I answer each prompt
 do {
-
     var lowerCase= confirm("Do you want lowercase?");
     console.log(lowerCase);
-
     var upperCase= confirm("Do you want uppercase?");
     console.log(upperCase);
     var numeric= confirm("Do you want numeric?");
