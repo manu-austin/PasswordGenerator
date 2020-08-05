@@ -1,10 +1,11 @@
 /* It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes. */
   
   body{
-    background-color: rgb(182, 65, 218);
+  background-image: url("./codebackground.gif");
+    /* background-color: rgb(182, 65, 218); */
     
 }
-
+/* 
 .navbar-custom { 
   background-color: lightgreen; 
 } 
@@ -44,14 +45,7 @@
     margin: 5px 2px;
   }
   
-
-  /* icon link to linkedin */
-  .fa-linkedin {
-    background: #007bb5;
-    color: white;
-   }
-
-
+ */
 
 
    @media screen and (max-width: 600px) {
