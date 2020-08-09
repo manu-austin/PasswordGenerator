@@ -1,18 +1,29 @@
 // WHEN prompted for the length of the password
 // THEN I choose a length of at least 8 characters and no more than 128 characters
-document.getElementById("myBtn").onclick = displayPassword;
+// former when of calling function. modified and put at bottom (document.getElementById("myBtn").onclick = displayPassword;)
 
-
+var passWord = document.querySelector("#Password");
+var longString = "";
+var numberOfCharacters = 0;
 
 function displayPassword(){
 
-    var longString = "";
-    var numberOfCharacters = 0;
+    
+// can't get my password to delete each time I do another generate password except when I hit cancel
+
+    passWord.textContent = "";
 
         do {
         var numberOfCharacters = prompt("How many characters do you want in your password? (Pick an integer between 8 and 128)");
+
+        // get out of loop if hit cancel at the beginning
+        if (numberOfCharacters === null) {
+            return;
+        }
+
         numberOfCharacters = numberOfCharacters * 1; // *1 So that computer recognizes when numberOfCharacters is a numerical value
 
+        
         if (numberOfCharacters<8 || numberOfCharacters>128 || Number.isInteger(numberOfCharacters) === false) {
             alert("Please choose an integer between 8 and 128!");
         }
@@ -25,13 +36,10 @@ function displayPassword(){
     // WHEN I answer each prompt
     do {
         var lowerCase= confirm("Do you want lowercase?");
-        console.log(lowerCase);
         var upperCase= confirm("Do you want uppercase?");
-        console.log(upperCase);
         var numeric= confirm("Do you want numeric?");
-        console.log(numeric);
         var specialCharacters= confirm("Do you want special characters?");
-        console.log(specialCharacters);
+
         // THEN my input should be validated and at least one character type should be selected
         if (lowerCase===false && upperCase===false && numeric===false && specialCharacters === false){
             alert("At least one character type should be selected!");
@@ -64,13 +72,19 @@ function displayPassword(){
 
 
     function randomString(length, chars) {
-        var result = '';
-        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        var result = "";
+        //math.random number between 0<1 math.floor(random() * # characters) give an integer between 0 and # chars -1
+        for (var i = 0; i < length; ++i) {
+            result = result + chars[Math.floor(Math.random() * chars.length)]; 
+        }
         return result;
     }
 
-    document.getElementById("Password").innerHTML = rString;
+    passWord.textContent = rString;
+    // document.getElementById("Password").innerHTML = rString;
     // console.log(rString);
 }
 
+// program is launched when we hit the button
+myBtn.addEventListener("click", displayPassword);
 
